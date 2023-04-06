@@ -1,0 +1,83 @@
+<?php
+session_start();
+error_reporting(0);
+include('connect.php');
+if($_SESSION['login']!=''){
+$_SESSION['login']='';
+}
+if(isset($_POST['login']))
+{
+$username=$_POST['username'];
+$password=md5($_POST['password']);
+$sql= "SELECT username FROM account WHERE username='$username' and password='$password'";
+$query = $conn->query($sql);
+if($query->num_rows != 0)
+{
+$_SESSION['login']=$_POST['username'];
+echo "<script type='text/javascript'> document.location ='index.php'; </script>";
+} else{
+echo "<script>alert('Không hợp lệ');</script>";
+}
+}
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>NEWS - TỔNG HỢP TIN TỨC</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <!------MENU SECTION START-->
+    <?php include('header.php');?>
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+        <div class="container">   
+        <div class="row pad-botm">
+                <div class="col-md-12">
+                    <h4 class="header-line">QUẢN TRỊ VIÊN ĐĂNG NHẬP</h4>
+                </div>
+            </div>       
+            <!--LOGIN PANEL START-->           
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" >
+                    <div class="panel panel-info">
+                        <div class="panel-heading">ĐĂNG NHẬP</div>
+                        <div class="panel-body">
+                            <form role="form" method="post">
+                                <div class="form-group">
+                                    <label>Tài khoản</label>
+                                    <input class="form-control" type="text" name="username" autocomplete="off" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Mật khẩu</label>
+                                    <input class="form-control" type="password" name="password" autocomplete="off" required />
+                                </div>
+                                <button type="submit" name="login" class="btn btn-info">ĐĂNG NHẬP </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <!---LOGIN PABNEL END-->            
+        </div>
+    </div>
+    <!-- FOOTER SECTION END-->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- CUSTOM SCRIPTS  -->
+    <script src="assets/js/custom.js"></script>
+</script>
+</body>
+</html>
