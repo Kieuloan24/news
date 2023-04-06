@@ -203,8 +203,8 @@ require('connect.php')
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Menu Manager
@@ -213,9 +213,9 @@ require('connect.php')
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="menuManager.php" class="nav-link active">
+                                    <a href="menuManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Menu List</p>
+                                        <p>MenuList</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -261,8 +261,8 @@ require('connect.php')
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Subcriber Manager
@@ -307,8 +307,8 @@ require('connect.php')
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Contact Manager
@@ -317,15 +317,14 @@ require('connect.php')
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="contactManager.php" class="nav-link">
+                                    <a href="contactManager.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Contact List</p>
                                     </a>
                                 </li>              
                             </ul>
                         </li>
-                    </ul>  
-                </nav>  
+                          
             </div>
             <!-- /.sidebar -->
         </aside>
@@ -337,12 +336,12 @@ require('connect.php')
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">MENU MANAGER</h1>
+                            <h1 class="m-0">CONTACT MANAGER</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Menu Manager</li>
+                                <li class="breadcrumb-item active">Contact Manager</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -351,7 +350,7 @@ require('connect.php')
             <!-- /.content-header -->
             <?php
 
-            $sql = "SELECT * FROM `menu`";
+            $sql = "SELECT * FROM `contact`";
             $result = $conn->query($sql);
 
             ?>
@@ -362,9 +361,6 @@ require('connect.php')
           <div class="col-12">
             <div class="card">
               <div class="row">
-                        <div class="col-12 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary"><a href="addMenu.php">Add Menu</a></button>
-                        </div>
                     </div>
               <!-- ./card-header -->
               <div class="card-body">
@@ -372,22 +368,23 @@ require('connect.php')
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Menu Title</th>
-                      <th>Menu Link</th>
-                      <th>ParentID</th>
-                      <th>Action</th>
+                      <th>Name</th>
+                      <th>Massage</th>
+                      <th>Subject</th>
+                      <th>Email</th>
                     </tr>
                   </thead>
                   <?php if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                         ?>
                                 <tr>
-                                    <td><?php echo" $row[menu_id]" ?></td>
-                                    <td><?php echo" $row[menu_title]" ?></td>
-                                    <td><?php echo" $row[menu_link]"?></td>
-                                    <td><?php echo" $row[menu_parent_id]"?></td>
-                                    <td><a href="editMenu.php?id=<?php echo $row['menu_id']; ?>" class="btn btn-warning   ">Edit</a>
-                                    <a href="deleteMenu.php?id=<?php echo $row['menu_id']; ?>"  onclick="return checkDelete()" class="btn btn-danger" >Delete</a>
+                                    <td><?php echo" $row[id]" ?></td>
+                                    <td><?php echo" $row[name]" ?></td>
+                                    <td><?php echo" $row[message]"?></td>
+                                    <td><?php echo" $row[subject]"?></td>
+                                    <td><?php echo" $row[email]"?></td>
+                                    <td>
+                                    <a href="deletecontact.php?id=<?php echo $row['id']; ?>"  onclick="return checkDelete()" class="btn btn-danger" >Delete</a>
                                 </td>
                     
                                 </tr>
