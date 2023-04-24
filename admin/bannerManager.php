@@ -459,7 +459,7 @@ header('location:bannerManager.php');
                         ?>
                                 <tr>
                                     <td><?php echo" $row[banner_id]" ?></td>
-                                    <td><img src="image/<?php echo "$row[image]";?>"></td>
+                                    <td><img width="100px" height="100px" src="<?="$row[image]";?>"></td>
                                     <td><?php echo" $row[banner_order]"?></td>
                                     <td><?php if ($row['status'] == 1) {
                                         echo 'Active';

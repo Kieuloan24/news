@@ -1,18 +1,4 @@
-<?php
-require('connect.php');
 
-if (isset($_POST['image'])) {
-    $name = $_POST['image'];
-    $banner_order = $_POST['banner_order'];
-    $link = $_POST['link'];
-    $status = $_POST['status'];
-
-    $insertBanner = "INSERT INTO `banner`( `image`,`banner_order`, `status`, `link`) VALUES ('$image','$banner_order', '$status', '$link')";
-    $result = mysqli_query($conn, $insertBanner);
-    mysqli_close($conn);
-    header('location:bannerManager.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -433,7 +419,7 @@ if (isset($_POST['image'])) {
                 </button>
             </div>
             <div class="modal-body">
-                <form action ="" method="POST" id="myform" enctype="multipart/form-data">
+                <form action ="upload.php" method="POST" id="myform" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Image</label><br>
                         <input type="file" name="image">
@@ -447,7 +433,7 @@ if (isset($_POST['image'])) {
                         <div class="right-wrap-field"><input type="link" class="form-control" name="link" id="link" placeholder="Enter link"></div>
                     </div>
                     <button type="submit" id="save" class="btn btn-primary">Submit</button>
-                    </form>
+                </form>
             </div>
         </div>
     </div>
