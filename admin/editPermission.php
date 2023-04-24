@@ -1,17 +1,23 @@
 <?php
 require('connect.php');
-
-if (isset($_POST['menutitle'])) {
-
-    $menutitle = $_POST['menutitle'];
-    $menulink = $_POST['menulink'];
-    $parent = $_POST['parent'];
-
-    $insertMenu = "INSERT INTO `menu`( `menu_title`,`menu_link`,`menu_parent_id`) VALUES ('$menutitle','$menulink','$parent')";
-    $result = mysqli_query($conn, $insertMenu);
-    mysqli_close($conn);
-    header('location:menuManager.php');
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM `permission` WHERE permission_id = $id";
+    $result = mysqli_query($conn, $sql);
+    $row = $result->fetch_assoc();
 }
+?>
+ <?php
+    if (isset($_POST['name'])) {
+        $id = $_GET['id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+
+        $sql = "UPDATE `permission` SET `name`='$name',`description`='$description' WHERE permission_id = $id";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        header('location:permissionManager.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -230,13 +236,13 @@ if (isset($_POST['menutitle'])) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./addMenu.php" class="nav-link active">
+                                    <a href="./addMenu.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Menu</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./menuManager.php" class="nav-link">
+                                    <a href="editMenu.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Menu</p>
                                     </a>
@@ -244,7 +250,7 @@ if (isset($_POST['menutitle'])) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Account Manager
@@ -265,7 +271,7 @@ if (isset($_POST['menutitle'])) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./accountManager.php" class="nav-link">
+                                    <a href="editAccount.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Account</p>
                                     </a>
@@ -273,7 +279,7 @@ if (isset($_POST['menutitle'])) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Subcriber Manager
@@ -288,38 +294,15 @@ if (isset($_POST['menutitle'])) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./subcriberManager.php" class="nav-link">
+                                    <a href="editSubcriber.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Subcriber</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Article Manager
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="articleManager.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Article List</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link ">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Edit Article</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Contact Manager
@@ -328,7 +311,7 @@ if (isset($_POST['menutitle'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="contactManager.php" class="nav-link">
+                                    <a href="contactManager.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Contact List</p>
                                     </a>
@@ -364,35 +347,6 @@ if (isset($_POST['menutitle'])) {
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Banner Manager
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="bannerManager.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Banner List</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="addBanner.php" class="nav-link ">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Banner</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link ">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Edit Banner</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -407,12 +361,12 @@ if (isset($_POST['menutitle'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">ADD MENU</h1>
+                            <h1 class="m-0">EDIT PERMISSION</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Menu Manager</a></li>
-                                <li class="breadcrumb-item active">Add Menu</li>
+                                <li class="breadcrumb-item"><a href="#">Permission Manager</a></li>
+                                <li class="breadcrumb-item active">Edit Permission</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -427,41 +381,23 @@ if (isset($_POST['menutitle'])) {
                         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Menu</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Permission</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form acction ="" method="POST" id="myform">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Menu Title</label>
-                        <input type="text" class="form-control" name="menutitle" aria-describedby="emailHelp" placeholder="Enter menu title" autocomplete="off"  required />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Menu Link</label>
-                        <input type="text" class="form-control" name="menulink" id="menulink" placeholder="Enter menu link">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Parent</label>
-                        <select name="parent" id="">
-                            <option value="">---Select---</option>
-                            <?php
-                                $parent = "SELECT * FROM `menu`";
-                                $parentResult = mysqli_query($conn, $parent);
-                                if($parentResult->num_rows > 0){
-                                while ($data = $parentResult->fetch_assoc()) {
-                            ?>
-                                <option value="<?php echo " $data[menu_id]" ?>"> <?php echo " $data[menu_title]" ?> </option>
-                            <?php
-                                }
-                            }
-
-                            ?>
-                        </select>
-                    </div>
-                    <button type="submit" id="save" class="btn btn-primary">Submit</button>
-                    </form>
+                <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" class="form-control" id="name" value="<?php echo " $row[name]" ?>" name="name" aria-describedby="emailHelp" placeholder="Enter name permission">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Description</label>
+                                    <input type="text" class="form-control" value="<?php echo " $row[description]" ?>" name="description" placeholder="Enter description">
+                                </div>
+                                <input type="submit" value="Submit" onclick="reload(this)" class="btn btn-primary">
+                            </form>
             </div>
         </div>
     </div>
@@ -510,3 +446,5 @@ if (isset($_POST['menutitle'])) {
 </body>
 
 </html>
+
+            

@@ -1,16 +1,14 @@
 <?php
 require('connect.php');
 
-if (isset($_POST['menutitle'])) {
+if (isset($_POST['name'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
 
-    $menutitle = $_POST['menutitle'];
-    $menulink = $_POST['menulink'];
-    $parent = $_POST['parent'];
-
-    $insertMenu = "INSERT INTO `menu`( `menu_title`,`menu_link`,`menu_parent_id`) VALUES ('$menutitle','$menulink','$parent')";
-    $result = mysqli_query($conn, $insertMenu);
+    $insertPermission = "INSERT INTO `permission`( `name`,`description`) VALUES ('$name','$description')";
+    $result = mysqli_query($conn, $insertPermission);
     mysqli_close($conn);
-    header('location:menuManager.php');
+    header('location:permissionManager.php');
 }
 ?>
 <!DOCTYPE html>
@@ -214,8 +212,8 @@ if (isset($_POST['menutitle'])) {
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Menu Manager
@@ -335,7 +333,7 @@ if (isset($_POST['menutitle'])) {
                                 </li>              
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -344,14 +342,14 @@ if (isset($_POST['menutitle'])) {
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="permissionManager.php" class="nav-link active">
+                                <li class="nav-item active">
+                                    <a href="permissionManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Permission List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="addPermission.php" class="nav-link ">
+                                    <a href="addPermission.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Permission</p>
                                     </a>
@@ -407,12 +405,12 @@ if (isset($_POST['menutitle'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">ADD MENU</h1>
+                            <h1 class="m-0">ADD PERMISSION</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Menu Manager</a></li>
-                                <li class="breadcrumb-item active">Add Menu</li>
+                                <li class="breadcrumb-item"><a href="#">Permission Manager</a></li>
+                                <li class="breadcrumb-item active">Add Permission</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -427,7 +425,7 @@ if (isset($_POST['menutitle'])) {
                         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Menu</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Permission</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -435,30 +433,12 @@ if (isset($_POST['menutitle'])) {
             <div class="modal-body">
                 <form acction ="" method="POST" id="myform">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Menu Title</label>
-                        <input type="text" class="form-control" name="menutitle" aria-describedby="emailHelp" placeholder="Enter menu title" autocomplete="off"  required />
+                        <label for="exampleInputEmail1">Permission Name</label>
+                        <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter permission name" autocomplete="off"  required />
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Menu Link</label>
-                        <input type="text" class="form-control" name="menulink" id="menulink" placeholder="Enter menu link">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Parent</label>
-                        <select name="parent" id="">
-                            <option value="">---Select---</option>
-                            <?php
-                                $parent = "SELECT * FROM `menu`";
-                                $parentResult = mysqli_query($conn, $parent);
-                                if($parentResult->num_rows > 0){
-                                while ($data = $parentResult->fetch_assoc()) {
-                            ?>
-                                <option value="<?php echo " $data[menu_id]" ?>"> <?php echo " $data[menu_title]" ?> </option>
-                            <?php
-                                }
-                            }
-
-                            ?>
-                        </select>
+                        <label for="exampleInputPassword1">Description</label>
+                        <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
                     </div>
                     <button type="submit" id="save" class="btn btn-primary">Submit</button>
                     </form>

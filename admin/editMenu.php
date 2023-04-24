@@ -308,6 +308,81 @@ if (isset($_GET['id'])) {
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Contact Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="contactManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contact List</p>
+                                    </a>
+                                </li>              
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Permission Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="permissionManager.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Permission List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addPermission.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Permission</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Banner Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="bannerManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Banner List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addBanner.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Banner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Banner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -342,7 +417,7 @@ if (isset($_GET['id'])) {
                         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Menu</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Menu</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

@@ -32,7 +32,7 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">                        
-                            <li><a href="/Tintuconline/admin/adminlogin.php">Admin đăng nhập</a></li>
+                            <li><a href="/NewsOL/admin/adminlogin.php">Admin đăng nhập</a></li>
                             <li><a href="singup.php">Người dùng đăng ký</a></li>
                             <li><a href="login.php">Người dùng đăng nhập</a></li>                 
                         </ul>
