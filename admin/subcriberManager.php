@@ -304,7 +304,104 @@ header('location:subcriberManager.php');
                                 </li>
                             </ul>
                         </li>
-                          
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Article Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="articleManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Article List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Article</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Contact Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="contactManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contact List</p>
+                                    </a>
+                                </li>              
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Permission Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="permissionManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Permission List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addPermission.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Permission</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Banner Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="bannerManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Banner List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addBanner.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Banner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Banner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
             </div>
             <!-- /.sidebar -->
         </aside>

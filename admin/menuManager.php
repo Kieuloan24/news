@@ -197,12 +197,11 @@ require('connect.php')
                         </div>
                     </div>
                 </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -324,6 +323,64 @@ require('connect.php')
                                 </li>              
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Permission Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="permissionManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Permission List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addPermission.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Permission</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Banner Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="bannerManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Banner List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addBanner.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Banner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Banner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>  
                 </nav>  
             </div>
@@ -386,7 +443,7 @@ require('connect.php')
                                     <td><?php echo" $row[menu_title]" ?></td>
                                     <td><?php echo" $row[menu_link]"?></td>
                                     <td><?php echo" $row[menu_parent_id]"?></td>
-                                    <td><a href="editMenu.php?id=<?php echo $row['menu_id']; ?>" class="btn btn-warning   ">Edit</a>
+                                    <td><a href="editMenu.php?id=<?php echo $row['menu_id']; ?>" class="btn btn-warning">Edit</a>
                                     <a href="deleteMenu.php?id=<?php echo $row['menu_id']; ?>"  onclick="return checkDelete()" class="btn btn-danger" >Delete</a>
                                 </td>
                     

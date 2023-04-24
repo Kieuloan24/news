@@ -284,6 +284,104 @@ require('connect.php')
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Article Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="articleManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Article List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Article</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Contact Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="contactManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contact List</p>
+                                    </a>
+                                </li>              
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Permission Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="permissionManager.php" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Permission List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addPermission.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Permission</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Banner Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="bannerManager.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Banner List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addBanner.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Banner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit Banner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav> 
             </div>
@@ -347,18 +445,18 @@ require('connect.php')
                                     <td><?php echo" $row[email]"?></td>
                                     <td><?php echo" $row[password]"?></td>
                                     <td><?php if ($row['status'] == 1) {
-                                        echo 'Hoạt động';
+                                        echo 'Active';
                                     } else {
-                                            echo 'Không hoạt động';
+                                            echo 'Unactive';
                                         }
                                         ?></td>
                                     <td><?php echo" $row[createDate]"?></td>
                                     <td>
                                     <?php if($row['status'] == 1)
                                         {?>
-                                        <a href="subcriberManager.php?id=<?php echo $row['subcriber_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn chặn sinh viên này?');" >  <button class="btn btn-danger">Khóa</button>
+                                        <a href="subcriberManager.php?id=<?php echo $row['subcriber_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn chặn sinh viên này?');" >  <button class="btn btn-danger">Block</button>
                                         <?php } else {?>
-                                        <a href="subcriberManager?id=<?php echo $row['subcriber_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn kích hoạt sinh viên này?');"><button class="btn btn-primary">Hoạt động</button> 
+                                        <a href="subcriberManager?id=<?php echo $row['subcriber_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn kích hoạt sinh viên này?');"><button class="btn btn-primary">Active</button> 
                                         <?php } ?>
                                         <a href="deleteSubcriber.php?id=<?php echo $row['subcriber_id']; ?>"  onclick="return checkDelete()" class="btn btn-danger" >Delete</a>
                                     </td>

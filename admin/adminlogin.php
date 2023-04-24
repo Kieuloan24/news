@@ -9,13 +9,13 @@ if(isset($_POST['login']))
 {
 $username=$_POST['username'];
 $password=md5($_POST['password']);
-$sql= "SELECT username FROM account WHERE username='$username' and password='$password'";
+$sql= "SELECT username, password FROM account WHERE username='$username' and password='$password'";
 $query = $conn->query($sql);
-if($query->num_rows != 0)
+if($query->num_rows > 0)
 {
 $_SESSION['login']=$_POST['username'];
-echo "<script type='text/javascript'> document.location ='index.php'; </script>";
-} else{
+echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+} else {
 echo "<script>alert('Không hợp lệ');</script>";
 }
 }

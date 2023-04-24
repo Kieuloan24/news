@@ -1,16 +1,24 @@
 <?php
-require('connect.php');
-
-if (isset($_POST['menutitle'])) {
-
-    $menutitle = $_POST['menutitle'];
-    $menulink = $_POST['menulink'];
-    $parent = $_POST['parent'];
-
-    $insertMenu = "INSERT INTO `menu`( `menu_title`,`menu_link`,`menu_parent_id`) VALUES ('$menutitle','$menulink','$parent')";
-    $result = mysqli_query($conn, $insertMenu);
-    mysqli_close($conn);
-    header('location:menuManager.php');
+session_start();
+error_reporting(0);
+include('connect.php');  
+if(isset($_GET['inid']))
+{
+$id=$_GET['inid'];
+$status = 0;
+$sql = "update banner set `status`='$status'  WHERE banner_id = $id";
+$result = mysqli_query($conn, $sql);
+mysqli_close($conn);
+header('location:bannerManager.php');
+}
+if(isset($_GET['id']))
+{
+$id = $_GET['id'];
+$status = 1;
+$sql = "update banner set `status`='$status'  WHERE banner_id = $id";
+$result = mysqli_query($conn, $sql);
+mysqli_close($conn);
+header('location:bannerManager.php');
 }
 ?>
 <!DOCTYPE html>
@@ -214,8 +222,8 @@ if (isset($_POST['menutitle'])) {
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Menu Manager
@@ -224,27 +232,27 @@ if (isset($_POST['menutitle'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./menuManager.php" class="nav-link">
+                                    <a href="menuManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Menu List</p>
+                                        <p>MenuList</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./addMenu.php" class="nav-link active">
+                                    <a href="addMenu.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Menu</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./menuManager.php" class="nav-link">
+                                    <a href="" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Menu</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Account Manager
@@ -253,26 +261,26 @@ if (isset($_POST['menutitle'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./accountManager.php" class="nav-link">
+                                    <a href="accountManager.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Account List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./addAccount.php" class="nav-link">
+                                    <a href="addAccount.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Account</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./accountManager.php" class="nav-link">
+                                    <a href="" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Account</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -282,13 +290,13 @@ if (isset($_POST['menutitle'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./subcriberManager.php" class="nav-link">
+                                    <a href="subcriberManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Subcriber List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./subcriberManager.php" class="nav-link">
+                                    <a href="" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Subcriber</p>
                                     </a>
@@ -334,7 +342,7 @@ if (isset($_POST['menutitle'])) {
                                     </a>
                                 </li>              
                             </ul>
-                        </li>
+                        </li>  
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -345,7 +353,7 @@ if (isset($_POST['menutitle'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="permissionManager.php" class="nav-link active">
+                                    <a href="permissionManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Permission List</p>
                                     </a>
@@ -357,15 +365,15 @@ if (isset($_POST['menutitle'])) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link ">
+                                    <a href="permissionManager.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Permission</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Banner Manager
@@ -374,7 +382,7 @@ if (isset($_POST['menutitle'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="bannerManager.php" class="nav-link">
+                                    <a href="bannerManager.php" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Banner List</p>
                                     </a>
@@ -386,16 +394,13 @@ if (isset($_POST['menutitle'])) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link ">
+                                    <a href="bannerManager.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Banner</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
@@ -407,80 +412,108 @@ if (isset($_POST['menutitle'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">ADD MENU</h1>
+                            <h1 class="m-0">BANNER MANAGER</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Menu Manager</a></li>
-                                <li class="breadcrumb-item active">Add Menu</li>
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Banner Manager</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
+            <?php
+
+            $sql = "SELECT * FROM `banner`";
+            $result = $conn->query($sql);
+
+            ?>
             <!-- Main content -->
             <section class="content">
                 <div class="card">
-                    <div class="row">
-                        <div class="col-12">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Menu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form acction ="" method="POST" id="myform">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Menu Title</label>
-                        <input type="text" class="form-control" name="menutitle" aria-describedby="emailHelp" placeholder="Enter menu title" autocomplete="off"  required />
+                <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary"><a href="addBanner.php">Add Banner</a></button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Menu Link</label>
-                        <input type="text" class="form-control" name="menulink" id="menulink" placeholder="Enter menu link">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Parent</label>
-                        <select name="parent" id="">
-                            <option value="">---Select---</option>
-                            <?php
-                                $parent = "SELECT * FROM `menu`";
-                                $parentResult = mysqli_query($conn, $parent);
-                                if($parentResult->num_rows > 0){
-                                while ($data = $parentResult->fetch_assoc()) {
-                            ?>
-                                <option value="<?php echo " $data[menu_id]" ?>"> <?php echo " $data[menu_title]" ?> </option>
-                            <?php
-                                }
+              <!-- ./card-header -->
+              <div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Image</th>
+                      <th>Banner Order</th>
+                      <th>Status</th>
+                      <th>Link</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <?php if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                        ?>
+                                <tr>
+                                    <td><?php echo" $row[banner_id]" ?></td>
+                                    <td><img src="image/<?php echo "$row[image]";?>"></td>
+                                    <td><?php echo" $row[banner_order]"?></td>
+                                    <td><?php if ($row['status'] == 1) {
+                                        echo 'Active';
+                                    } else {
+                                            echo 'Unactive';
+                                        }
+                                        ?></td>
+                                    <td><?php echo" $row[link]"?></td>
+                                    <td>
+                                    <?php if($row['status'] == 1)
+                                        {?>
+                                        <a href="bannerManager.php?inid=<?php echo $row['banner_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn chặn người dùng này?');" >  <button class="btn btn-danger">Block</button>
+                                        <?php } else {?>
+                                        <a href="bannerManager.php?id=<?php echo $row['banner_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn kích hoạt người dùng này?');"><button class="btn btn-primary">Active</button> 
+                                        <?php } ?>
+                                        <a href="deleteBanner.php?id=<?php echo $row['banner_id']; ?>"  onclick="return checkDelete()" class="btn btn-danger" >Delete</a>
+                                    </td>
+                                    
+                                </tr>
+                        <?php
                             }
-
-                            ?>
-                        </select>
-                    </div>
-                    <button type="submit" id="save" class="btn btn-primary">Submit</button>
-                    </form>
+                        } ?>
+                        
+            <!-- /.content -->
+        </div>
+        
+        <!-- Modal -->
+        
+            
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
             </div>
         </div>
-    </div>
-    <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0
+        
+     
         </div>
-    </footer>
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0
+            </div>
+        </footer>
     </div>
     <!-- ./wrapper -->
 
@@ -507,6 +540,13 @@ if (isset($_POST['menutitle'])) {
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard2.js"></script>
+    <script>
+        $('#exampleModalCenter').modal(options)
+        function checkDelete(){
+            return confirm('Bạn có chắc chắn muốn xóa?');
+        }
+        
+    </script>
 </body>
 
 </html>
