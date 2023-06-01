@@ -27,7 +27,7 @@ header('location:bannerManager.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard 2</title>
+    <title>TỔNG HỢP TIN TỨC| Dashboard </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -39,7 +39,7 @@ header('location:bannerManager.php');
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -48,7 +48,7 @@ header('location:bannerManager.php');
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -190,7 +190,7 @@ header('location:bannerManager.php');
             <!-- Brand Logo -->
             <a href="index3.php" class="brand-link">
                 <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">QUẢN TRỊ VIÊN</span>
             </a>
 
             <!-- Sidebar -->
@@ -201,7 +201,7 @@ header('location:bannerManager.php');
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">Admin</a>
                     </div>
                 </div>
 
@@ -316,6 +316,12 @@ header('location:bannerManager.php');
                                     <a href="articleManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Article List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addArticle.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Article</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -438,7 +444,7 @@ header('location:bannerManager.php');
             <div class="card">
               <div class="row">
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary"><a href="addBanner.php">Add Banner</a></button>
+                            <button type="button" class="btn btn-primary"><a style="color: black;" href="addBanner.php">Add Banner</a></button>
                         </div>
                     </div>
               <!-- ./card-header -->
@@ -471,9 +477,9 @@ header('location:bannerManager.php');
                                     <td>
                                     <?php if($row['status'] == 1)
                                         {?>
-                                        <a href="bannerManager.php?inid=<?php echo $row['banner_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn chặn người dùng này?');" >  <button class="btn btn-danger">Block</button>
+                                        <a href="bannerManager.php?inid=<?php echo $row['banner_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn dừng quảng cáo này?');" >  <button class="btn btn-danger">Block</button>
                                         <?php } else {?>
-                                        <a href="bannerManager.php?id=<?php echo $row['banner_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn kích hoạt người dùng này?');"><button class="btn btn-primary">Active</button> 
+                                        <a href="bannerManager.php?id=<?php echo $row['banner_id'];?>" onclick="return confirm('Bạn có chắc chắn muốn kích hoạt quảng cáo này?');"><button class="btn btn-primary">Active</button> 
                                         <?php } ?>
                                         <a href="deleteBanner.php?id=<?php echo $row['banner_id']; ?>"  onclick="return checkDelete()" class="btn btn-danger" >Delete</a>
                                     </td>

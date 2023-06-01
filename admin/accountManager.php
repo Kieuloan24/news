@@ -20,7 +20,7 @@ require('connect.php')
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -29,7 +29,7 @@ require('connect.php')
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -300,6 +300,12 @@ require('connect.php')
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="addArticle.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Article</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Edit Article</p>
@@ -419,7 +425,7 @@ require('connect.php')
             <div class="card">
               <div class="row">
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary"><a href="addAccount.php">Add Account</a></button>
+                            <button type="button" class="btn btn-primary"><a style="color: black;" href="addAccount.php">Add Account</a></button>
                         </div>
                     </div>
               <!-- ./card-header -->

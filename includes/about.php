@@ -1,3 +1,46 @@
+<?php
+    require ('connect.php');
+
+
+    function buldingMenu($parent, $menuData) {
+        $html = '';
+        if (isset($menuData['menu_parent_id'][$parent])) {
+            $html .= "<ul id='navigation' class='submenu'>";
+                foreach ($menuData['menu_parent_id'][$parent] as $value) {
+                    $html.= "<li>";
+                    $html.= "<a href='" .$menuData['items'][$value]['menu_link'] ."'> " .$menuData['items'][$value]['menu_title'] ."</a>";
+                    $html.= buldingMenu($value, $menuData);
+                    $html.= "</li>";
+                }
+            $html.= "</ul>";
+        }
+        return $html;
+    }
+    $sql = "SELECT * FROM `menu`";
+    $result = $conn->query($sql);
+    
+    $menuData = [];
+    foreach ($result as $value) {
+        $menuData['items'][$value['menu_id']] = $value;
+        $menuData['menu_parent_id'][$value['menu_parent_id']][] = $value['menu_id'];
+
+    }
+    // echo "<pre>";
+    // var_dump( $menuData['items'][$value['menu_id']]);
+    // echo "</pre>";
+
+if (isset($_POST['name'])) {
+    echo'zxxxx';
+    $name = $_POST['name'];
+    $message = $_POST['message'];
+    $subject = $_POST['subject'];
+    $email = $_POST['email'];
+    $insertContact = "INSERT INTO `contact`(`name`, `message`, `subject`, `email`) VALUES ($name,$message,$subject,$email);";
+    $result = mysqli_query($conn, $insertContact);
+    mysqli_close($conn);
+    // header('location:contact.php');
+}
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -43,23 +86,7 @@
     <div class="header-area">
         <div class="main-header ">
             <div class="header-top black-bg d-none d-sm-block">
-                <div class="container">
-                    <div class="col-xl-12">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="header-info-left">
-                                <ul>     
-                                    <li class="title"><span class="flaticon-energy"></span> trending-title</li>
-                                    <li>Class property employ ancho red multi level mansion</li>
-                                </ul>
-                            </div>
-                            <div class="header-info-right">
-                                <ul class="header-date">
-                                    <li><span class="flaticon-calendar"></span> +880166 253 232</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="header-mid gray-bg">
                 <div class="container">
@@ -88,21 +115,8 @@
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
-                                <nav>                  
-                                    <ul id="navigation">
-                                        <li><a href="index.php">Home</a></li>
-                                        <li><a href="about.php">about</a></li>
-                                        <li><a href="categori.php">Category</a></li>
-                                        <li><a href="latest_news.php">Latest News</a></li>
-                                        <li><a href="#">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.php">Blog</a></li>
-                                                <li><a href="blog_details.php">Blog Details</a></li>
-                                                <li><a href="elements.php">Element</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.php">Contact</a></li>
-                                    </ul>
+                            <nav>                  
+                                    <?php echo buldingMenu(0, $menuData) ?>
                                 </nav>
                             </div>
                         </div>             
@@ -110,9 +124,6 @@
                             <div class="header-right f-right d-none d-lg-block">
                                 <!-- Heder social -->
                                 <ul class="header-social">    
-                                    <li><a href="https://www.fb.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                     <li> <a href="#"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
                                 <!-- Search Nav -->
@@ -133,53 +144,7 @@
     <!-- Header End -->
 </header>
 <main>
-    <div class="about-details section-padding30">
-        <div class="container">
-            <div class="row">
-                <div class="offset-xl-1 col-lg-8">
-                    <div class="about-details-cap mb-50">
-                        <h4>Our Mission</h4>
-                        <p>Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.
-                            </p>
-                        <p> Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan.</p>
-                    </div>
-                    <div class="about-details-cap mb-50">
-                        <h4>Our Vision</h4>
-                        <p>Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.
-                            </p>
-                        <p> Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--? About Area Start-->
-    <div class="support-company-area pt-100 pb-100 section-bg fix" data-background="assets/img/gallery/section_bg02.jpg">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="support-location-img">
-                        <img src="assets/img/gallery/about.png" alt="">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="right-caption">
-                        <!-- Section Tittle -->
-                        <div class="section-tittles section-tittles2 mb-50">
-                            <span>Our Top Services</span>
-                            <h2>Our Best Services</h2>
-                        </div>
-                        <div class="support-caption">
-                            <p class="pera-top">Mollit anim laborum duis adseu dolor iuyn voluptcate velit ess cillum dolore egru lofrre dsu quality mollit anim laborumuis au dolor in voluptate velit cillu.</p>
-                            <p class="mb-65">Mollit anim laborum.Dvcuis aute serunt  iruxvfg dhjkolohr indd re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur sfwsignjnt occa cupidatat non aute iruxvfg dhjinulpadeserunt moll.</p>
-                            <a href="about.php" class="btn post-btn ">More About Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About Area End-->
+
     <!-- Team Start -->
     <div class="team-area section-padding30">
         <div class="container">
@@ -187,43 +152,32 @@
                 <div class="cl-xl-7 col-lg-8 col-md-10">
                     <!-- Section Tittle -->
                     <div class="section-tittles mb-70">
-                        <span>Our Professional members </span>
-                        <h2>Our Team Mambers</h2>
+                        <h2>Our Team Members</h2>
                     </div> 
                 </div>
             </div>
             <div class="row">
                 <!-- single Tem -->
+                
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                     <div class="single-team mb-30">
                         <div class="team-img">
-                            <img src="assets/img/gallery/team2.png" alt="">
+                            <img src="assets/img/gallery/a1.jpg" alt="">
                         </div>
                         <div class="team-caption">
-                            <h3><a href="#">Ethan Welch</a></h3>
-                            <span>UX Designer</span>
+                            <h3><a href="#">Kiều Loan</a></h3>
+                            <span>Sinh viên</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
                     <div class="single-team mb-30">
                         <div class="team-img">
-                            <img src="assets/img/gallery/team3.png" alt="">
+                            <img src="assets/img/gallery/a2.jpg" alt="">
                         </div>
                         <div class="team-caption">
-                            <h3><a href="#">Ethan Welch</a></h3>
-                            <span>UX Designer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team1.png" alt="">
-                        </div>
-                        <div class="team-caption">
-                            <h3><a href="#">Ethan Welch</a></h3>
-                            <span>UX Designer</span>
+                            <h3><a href="#">Long Vũ</a></h3>
+                            <span>Sinh viên</span>
                         </div>
                     </div>
                 </div>
@@ -260,9 +214,9 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
-                                        <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
+                                        <p class="info1">Trường Đại học Vinh</p>
+                                        <p class="info2">Viện Kỹ thuật và Công nghệ, Tầng 1 Nhà A0</p>
+                                        <p class="info2">Phone: 0238 3855 452</p>
                                         </div>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@ if (isset($_POST['menutitle'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard 2</title>
+    <title>TỔNG HỢP TIN TỨC| Dashboard </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -31,7 +31,7 @@ if (isset($_POST['menutitle'])) {
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -40,7 +40,7 @@ if (isset($_POST['menutitle'])) {
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -182,7 +182,7 @@ if (isset($_POST['menutitle'])) {
             <!-- Brand Logo -->
             <a href="index3.php" class="brand-link">
                 <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">QUẢN TRỊ VIÊN</span>
             </a>
 
             <!-- Sidebar -->
@@ -193,7 +193,7 @@ if (isset($_POST['menutitle'])) {
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">Admin</a>
                     </div>
                 </div>
 
@@ -308,6 +308,12 @@ if (isset($_POST['menutitle'])) {
                                     <a href="articleManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Article List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addArticle.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Article</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

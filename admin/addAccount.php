@@ -32,7 +32,7 @@ if (isset($_POST['name'])) {
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -41,7 +41,7 @@ if (isset($_POST['name'])) {
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -309,6 +309,12 @@ if (isset($_POST['name'])) {
                                     <a href="articleManager.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Article List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="addArticle.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Article</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

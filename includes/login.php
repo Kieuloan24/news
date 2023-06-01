@@ -38,7 +38,7 @@ if($query->rowCount() > 0)
 if($result->status==1)
 {
 $_SESSION['login']=$_POST['email'];
-echo "<script type='text/javascript'> document.location ='index.php'; </script>";
+echo "<script type='text/javascript'> document.location ='home.php'; </script>";
 } else {
 echo "<script>alert('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên');</script>";
 }

@@ -140,9 +140,6 @@ if (isset($_POST['name'])) {
                             <div class="header-right f-right d-none d-lg-block">
                                 <!-- Heder social -->
                                 <ul class="header-social">    
-                                    <li><a href="https://www.fb.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                     <li> <a href="#"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
                                 <!-- Search Nav -->
@@ -245,22 +242,22 @@ if (isset($_POST['name'])) {
                 <div class="media contact-info">
                     <span class="contact-info__icon"><i class="ti-home"></i></span>
                     <div class="media-body">
-                        <h3>Buttonwood, California.</h3>
-                        <p>Rosemead, CA 91770</p>
+                        <h3>Trường Đại học Vinh</h3>
+                        <p>182 Lê Duẩn, Bến Thủy, Thành phố Vinh, Nghệ An</p>
                     </div>
                 </div>
                 <div class="media contact-info">
                     <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                     <div class="media-body">
-                        <h3>+1 253 565 2365</h3>
-                        <p>Mon to Fri 9am to 6pm</p>
+                        <h3>0238 3855 452</h3>
+                        <p>Mon to Fri 7am to 5pm</p>
                     </div>
                 </div>
                 <div class="media contact-info">
                     <span class="contact-info__icon"><i class="ti-email"></i></span>
                     <div class="media-body">
-                        <h3>support@colorlib.com</h3>
-                        <p>Send us your query anytime!</p>
+                        <h3>vinhuni@vinhuni.edu.vn</h3>
+                        <p>Liên hệ để được tư vấn thêm</p>
                     </div>
                 </div>
             </div>
@@ -284,9 +281,9 @@ if (isset($_POST['name'])) {
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
-                                        <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
+                                    <p class="info1">Trường Đại học Vinh</p>
+                                        <p class="info2">Viện Kỹ thuật và Công nghệ, Tầng 1 Nhà A0</p>
+                                        <p class="info2">Phone: 0238 3855 452</p>
                                 </div>
                                 </div>
                             </div>
